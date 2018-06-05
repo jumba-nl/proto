@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package proto;
+
+import "legacy.proto";
+import "pagination.proto";
+
+service AddressService {
+    rpc Get(AddressGetOptions) returns (Address) {}
+    rpc GetMulti(AddressGetMultiOptions) returns (Addresses) {}
+    rpc List(AddressListOptions) returns (Addresses) {}
+    rpc Update(Address) returns (Address) {}
+}
+
+message AddressGetOptions {
+    string id = 1;
+    string path = 2;
+    string bagid = 3;
+}
+
+message AddressGetByPathOptions {
+    string path = 1;
+}
+
+message AddressGetMultiOptions {
+    repeated string ids = 1;
+}
+
+message AddressListOptions {
+    Pagination Pagination = 1;
+}
+
+message Address {
+    string id = 1;
+    string path = 2;
+    string bagid = 3;
+    Legacy Legacy = 4;
+}
+
+message Addresses {
+    repeated Address Address = 1;
+    Pagination Pagination = 2;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+
+service AuthService {
+    rpc Get (AuthGetOptions) returns (Profile) {}
+}
+
+message AuthGetOptions {
+    string token = 1;
+}
+
+message Profile {
+    string id = 1;
+    string name = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package proto;
+
+message Pagination {
+    int64 Total = 1;
+  	int64 Limit = 2;
+  	int64 Offset = 3;
+  	string Cursor = 4;
+  	string Next = 5;
+}

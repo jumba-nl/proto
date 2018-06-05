@@ -4,11 +4,17 @@ package proto;
 
 import "legacy.proto";
 import "pagination.proto";
+import "google/api/annotations.proto";
 
 service AddressService {
     rpc Get(AddressGetOptions) returns (Address) {}
     rpc GetMulti(AddressGetMultiOptions) returns (Addresses) {}
-    rpc List(AddressListOptions) returns (Addresses) {}
+    rpc List(AddressListOptions) returns (Addresses) {
+        option (google.api.http) = {
+            post: "/v1/address/list"
+            body: "*"
+        };
+    }
     rpc Update(Address) returns (Address) {}
 }
 

@@ -1,21 +1,33 @@
 syntax = "proto3";
 
-package proto;
+package api_v1;
 
 import "legacy.proto";
 import "pagination.proto";
 import "google/api/annotations.proto";
 
 service AddressService {
-    rpc Get(AddressGetOptions) returns (Address) {}
-    rpc GetMulti(AddressGetMultiOptions) returns (Addresses) {}
+    rpc Get(AddressGetOptions) returns (Address) {
+        option (google.api.http) = {
+            get: "/v1/address/get"
+        };
+    }
+    rpc GetMulti(AddressGetMultiOptions) returns (Addresses) {
+        option (google.api.http) = {
+            get: "/v1/address/getmulti"
+        };
+    }
     rpc List(AddressListOptions) returns (Addresses) {
         option (google.api.http) = {
-            post: "/v1/address/list"
+            get: "/v1/address/list"
+        };
+    }
+    rpc Update(Address) returns (Address) {
+        option (google.api.http) = {
+            put: "/v1/address/update"
             body: "*"
         };
     }
-    rpc Update(Address) returns (Address) {}
 }
 
 message AddressGetOptions {
@@ -33,17 +45,17 @@ message AddressGetMultiOptions {
 }
 
 message AddressListOptions {
-    Pagination Pagination = 1;
+    Pagination pagination = 1;
 }
 
 message Address {
     string id = 1;
     string path = 2;
     string bagid = 3;
-    Legacy Legacy = 4;
+    Legacy legacy = 4;
 }
 
 message Addresses {
-    repeated Address Address = 1;
-    Pagination Pagination = 2;
+    repeated Address addresses = 1;
+    Pagination pagination = 2;
 }

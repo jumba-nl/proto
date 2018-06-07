@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package proto;
+package api_v1;
 
 service AuthService {
     rpc Get (AuthGetOptions) returns (Profile) {}

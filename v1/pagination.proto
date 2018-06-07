@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package proto;
+package api_v1;
 
 message Pagination {
-    int64 Total = 1;
-  	int64 Limit = 2;
-  	int64 Offset = 3;
-  	string Cursor = 4;
-  	string Next = 5;
+    int64 total = 1;
+  	int64 limit = 2;
+  	int64 offset = 3;
+  	string cursor = 4;
+  	string next = 5;
 }

@@ -22,14 +22,29 @@ service AddressService {
             get: "/v1/address/list"
         };
     }
+    rpc Suggest(AddressSuggestOptions) returns (Addresses) {}
     rpc Update(Address) returns (Address) {}
+    rpc Index(AddressIndexOptions) returns (AddressIndexResponse) {}
+}
+
+message AddressIndexOptions {
+    string id = 1;
+}
+
+message AddressIndexResponse {
+    string message = 1;
+}
+
+message AddressSuggestOptions {
+    string suggest = 1;
+    bool forsale = 2;
+    int64 type = 3;
 }
 
 message AddressGetOptions {
     string id = 1;
     string path = 2;
     string bagid = 3;
-
 }
 
 message AddressGetByPathOptions {

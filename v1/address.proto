@@ -51,6 +51,8 @@ message Address {
     Legacy legacy = 4;
     repeated string suggest = 5;
     bool forsale = 6;
+    string label = 7;
+    int64 type = 8;
 }
 
 message Addresses {

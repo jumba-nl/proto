@@ -38,7 +38,7 @@ message AddressIndexResponse {
 message AddressSuggestOptions {
     string suggest = 1;
     bool forsale = 2;
-    int64 type = 3;
+    repeated int64 type = 3;
 }
 
 message AddressGetOptions {
@@ -63,8 +63,11 @@ message Address {
     string id = 1;
     string path = 2;
     string bagid = 3;
+    // @inject_tag: datastore:",noindex"
     Legacy legacy = 4;
+    // @inject_tag: datastore:",noindex"
     bool forsale = 6;
+    // @inject_tag: datastore:",noindex"
     string label = 7;
     int64 type = 8;
 }

@@ -3,5 +3,6 @@ syntax = "proto3";
 package api_v1;
 
 message Legacy {
+    // @inject_tag: datastore:",noindex"
     bytes source = 1;
 }

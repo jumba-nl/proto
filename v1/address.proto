@@ -38,7 +38,8 @@ message AddressIndexResponse {
 message AddressSuggestOptions {
     string suggest = 1;
     bool forsale = 2;
-    repeated int64 type = 3;
+    repeated int64 types = 3;
+    Pagination pagination = 4;
 }
 
 message AddressGetOptions {
